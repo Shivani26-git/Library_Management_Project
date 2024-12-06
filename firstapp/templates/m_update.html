@@ -1,0 +1,68 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <link rel="stylesheet" href="{% static 'table.css' %}">
+    <title>Members</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+<body>
+    <main align = "center">
+        <form action="{% url 'editmember' member.id %}" method="post">
+                <!-- Security token -->
+                {% csrf_token %}
+                <label>Edit Member Detail</label><br><br>
+                <div class="book" align="center">
+                    <table border="1" align="center">
+                        <tr>
+                            <td><label>First Name:</label></td>
+                            <td><input name="f_name" value="{{ member.firstname }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last Name:</label></td>
+                            <td><input name="l_name" value="{{ member.lastname }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Date of Birth:</label></td>
+                            <td><input type="text" name="dob" value="{{ member.d_o_b }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Address:</label></td>
+                            <td><input name="address" value="{{ member.address }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Mobile:</label></td>
+                            <td><input name="mobile" value="{{ member.mobile }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Email:</label></td>
+                            <td><input name="email" value="{{ member.email }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Type Of Member:</label></td>
+                            <td><select type="select" name="t_o_m">
+                                <option>{{ member.m_type }}</option>
+                                <option>Admin</option>
+                                <option>Staff</option>
+                                <option>Member</option>
+                            </select> 
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <input type="submit" value="Update Member">
+                <button><a href="/member_entry">Cancel</a></button>
+            </form>      
+    </main>
+
+    <a href="/home"><label>Back</label></a>
+
+    <footer>
+      <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

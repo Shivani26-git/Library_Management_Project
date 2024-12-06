@@ -1,0 +1,81 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <head>
+        <style>
+            form {
+                border: 2px solid #333; /* Add a 2px solid border with color #333 */
+                padding: 20px; /* Add some padding inside the form */
+                width: 300px; /* Set a specific width for the form */
+                margin: auto; /* Center the form horizontally */
+            }
+    
+            /* Add some additional styling for form elements if needed */
+            label {
+                display: block;
+                margin-bottom: 8px;
+            }
+    
+            input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+            }
+    
+            button {
+                background-color: #4caf50;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        </style>
+</head>
+    <title>Login Page</title>
+    
+<body>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    <h2 align = "Center">Login here</h2>
+    
+    <main align="center">
+        <form method="POST" enctype="multipart/form-data" action="{% url 'login_submit' %}">
+            {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <td><label for="username">User Name</label></td>
+                    <td><input type="text" id="username" name="username" required placeholder="Enter your username"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" id="password" name="password" required placeholder="Enter your password"></td>
+                </tr>
+                <tr>
+                    <td><label for="user_type">User Type*</label></td>
+                    <td>
+                        <select id="user_type" name="user_type" required>
+                            <option value="" disabled selected>Select User Type</option>
+                            <option value="admin">Admin</option>
+                            <option value="staff">Staff</option>
+                            <option value="member">Member</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+            <input type="submit" value="Login">
+            <hr>
+            <p style="margin-top: 20px;">Don't have an account? <a href="/sing_up">Sign Up</a></p>
+        </form>
+        
+    </main>
+        <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

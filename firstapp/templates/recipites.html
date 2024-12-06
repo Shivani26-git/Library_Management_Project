@@ -1,0 +1,88 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Book Issue Details</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    <body>
+      <main>
+        <form action="print_details/{{ books.id }}"  method="post">
+          <!-- Security token -->
+          {% csrf_token %}
+       
+          <nav>
+            <a href="/home">Home</a>
+        </nav>
+        <main>
+          <br>
+            <table border="1" align="center">
+              <tr>
+                <td align="center" colspan="7"> <b>Mera Pustkalay</td> 
+              </tr> 
+              <tr>
+              <tr>
+                <td align="center" colspan="7"> <b>Address: Deepak Nagar, Malviay Chowk, Durg (C.G.) & Contact No. : +91 96325-78541</td> 
+              </tr> 
+              <tr>
+                <tr>
+                  <td align="right"colspan="6"> <b>Date :</td> 
+                  <td align="right">Current Date</td> 
+              </tr> 
+              <tr>
+                <td align="right"> <b>Member Id :</td> 
+                <td align="left" colspan="6">{{ books.l_Id }}</td> 
+              </tr> 
+              <tr>
+              <tr>
+                <td align="right"> <b>Name : </td> 
+                  <td align="left" colspan="6">{{ books.m_name }}</td> 
+              </tr> 
+              <tr>
+              <tr>
+                <td align="right"> <b>Contact No. :</td> 
+                  <td align="left" colspan="6">{{ books.mobile }}</td> 
+              </tr> 
+              <tr>
+                    <td align="center"> <Label><b>Issue Id</Label></td>
+                    <td align="center"> <Label><b>Book Name</Label></td>
+                    <td align="center"> <Label><b>Author</Label></td>
+                    <td align="center"> <Label><b>Publisher </Label></td>
+                    <td align="center"> <Label><b> Issue Date</Label></td>
+                    <td align="center"> <Label><b> Reissue Date</Label></td>
+                    <td align="center"> <Label><b> Return Date</Label></td>
+                </tr>
+                <tr>
+                  <td align="center">{{ books.b_Id }}</td>             
+                  <td align="center">{{ books.book_name }}</td>             
+                  <td align="center">{{ books.writer_name }}</td>             
+                  <td align="center">{{ books.publisher_name }}</td>             
+                  <td align="center">{{ books.i_date }}</td>             
+                  <td align="center">{{ books.risu_date }}</td>             
+                  <td align="center">{{ books.r_date }}</td>             
+                </tr>
+                <tr>
+                  <td align="right"> <Label><b>Over Due:</Label></td>
+                  <td align="right" colspan="2"> <Label><b>Days in :</Label></td>
+                  <td align="right"> <Label><b>No. Of day</Label></td>
+                  <td align="right"> <Label><b>Due Fine: </Label></td>
+                </tr>
+                <tr>
+                <tr>
+                  <td align="right"> <Label><b>Total:</Label></td>
+                    <td align="left" colspan="6">Total Amount</td> 
+                </tr>
+                <tr>
+                  <td align="right"> <Label> <b>Note : 1</b></Label></td>
+                  <td align="left" colspan="6">Over due charges apply 2.00Rs/day .</td> 
+                </tr>
+                <tr>
+                  <td align="right"> <Label> <b>2</b></Label></td>
+                  <td align="left" colspan="6">Term & Condition apply*</td> 
+                </tr>
+        </main>
+        <button onclick="window.print()">Print this page</button>
+    </body>
+</html>

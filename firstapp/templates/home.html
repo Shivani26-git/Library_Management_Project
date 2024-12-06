@@ -1,0 +1,43 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Home</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+<body>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+        <form method="post" action="{% url 'logout' %}" align="right">
+            {% csrf_token %}
+        <button type="submit" align="left">Logout</button>
+        {% for x in users %}
+        <h6>Username {{ x.user_name }}</h6>
+        {% endfor%}
+        </form>
+    </header>
+    
+    <nav>
+        <a href="/user" >Users</a>
+        <a href="/member_entry">Members</a>
+        <a href="/library">Library</a>
+        <a href="/b_i_request">issue Request</a>
+        <a href="/about_us">About Us</a>
+        <!--{% for x in users %}
+             <h6>Username {{ x.user_name }}</h6>
+        {% endfor%}-->
+            
+    </nav>
+    <img src="{% static 'HOME.jpg' %}" width="1348" height="575">
+    <main>
+      
+    </main>
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

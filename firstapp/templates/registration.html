@@ -1,0 +1,65 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Board Of Members</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+<body>
+    <nav>
+        <a href="/home">Home</a>
+        
+    </nav>
+    <main align = "center ">
+      <h2 align = "center ">Member Registration</h2>
+      <form method="POST" enctype="multipart/form-data" action="{% url 'registration' %}">
+ 
+        <!-- Security token -->
+        {% csrf_token %}
+            <table align = "center">
+            <tr>
+                <td>First Name : </td>
+                <td><input type="text" , name="f_name" required></td>
+            </tr>
+            <tr>
+                <td>Last Name : </td>
+                <td><input type="text" , name="l_name" required></td>
+            </tr>
+            <tr>
+                <td>Date of Birth : </td>
+                <td><input type="text" , name="dob" placeholder="YYYY/MM/DD" required></td>
+            </tr>
+            <tr>
+                <td>Address : </td>
+                <td><input type="text" , name="address" required></td>
+            </tr>
+            <tr>
+                <td>Mobile No. : </td>
+                <td><input type="text" , name="mobile" required></td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td><input type="email" , name="email" required></td>
+            </tr>
+            <tr>
+                <td>Type of Member</td>
+                <td><select type="select" name="t_o_m">
+                    <option>Admin</option>
+                    <option>Staff</option>
+                    <option>Member</option>
+                </select> 
+                </td>
+            </tr>
+        </table><br>
+        <input type="submit">
+        </form>    
+    </main>
+    <a href="/member_entry"><label>Back</label></a>
+    <footer>
+      <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

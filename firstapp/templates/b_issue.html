@@ -1,0 +1,45 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Book Issue</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+       
+<body>
+
+    <nav>
+        <a href="/home">Home</a>
+    </nav>
+    <main align = "center">
+        <h2>Book Issue</h2>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'issue' %}" >
+            <!-- Security token -->
+            {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <td>Member ID</td>
+                    <td><input id="l_card_id" name="l_card_id" required></td>
+                </tr>
+                <tr>
+                    <td>Book Id</td>
+                    <td><input id="book_id" name="book_id" required></td>
+                </tr>
+                <tr>
+                    <td>Date & Time</td>
+                    <td><input type="date" id="i_date" name="i_date" required></td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit">
+        </form>
+        </main>
+        
+    <a href="/library"><label>Back</label></a>
+    <footer>
+        <marquee>&copy; 2024 Pustak Library. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

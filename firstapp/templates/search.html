@@ -1,0 +1,90 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Search</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    <head>
+        <script>
+        function resetRow() {
+            var rowToReset = document.getElementById("rowToReset");
+            var cells = rowToReset.getElementsByTagName("td");
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].innerHTML = "";
+            }
+        }
+        </script>
+        </head>
+        <body>
+            <nav>
+                <a href="/home">Home</a>
+            </nav>
+            <main align="center">
+                <h2>Book search</h2>
+                <div>
+                    <form method="POST" enctype="multipart/form-data" action="{% url 'search_result' %}">
+                        <!-- Security token -->
+                        {% csrf_token %}
+                        <select name = "type">
+                            <option >Select Type of search</option>
+                            <option value="id">Book Id</option>
+                            <option value="book_name">Book Name</option>
+                            <option value="book_writer">Book Writer</option>
+                            <option value="book_publisher">Book Publisher</option>
+                            <option value="book_edition">Book Edition</option>
+                            <option value="book_type">Book Type</option>
+                            <option value="book_price">Book Price</option>
+                            <option value="book_qty">Book Quantity</option>
+                        </select><br><br>
+                        <input type="text" name="search" placeholder="Search Book.." required>
+                        <input type="submit">
+                    </form>
+                </div>
+        
+                <h2 align="center">Search Result</h2>
+                <table border="1" align="center">
+                    <th style="width:75px">Book ID</th>
+                    <th style="width:100px">Book Name</th>
+                    <th style="width:100px">Writer</th>
+                    <th style="width:100px">Edition </th>
+                    <th style="width:100px">Publisher</th>
+                    <th style="width:100px">Type</th>
+                    <th style="width:100px">Price</th>
+                    <th style="width:100px">Qty</th>
+        
+                    {% if book %}
+                        {% for x in book %}
+                            <tr>
+                                <td align="center">{{ x.id }}</td>
+                                <td>{{ x.book_name }}</td>
+                                <td>{{ x.writer_name }}</td>
+                                <td align="center">{{ x.book_edition }}</td>
+                                <td>{{ x.publisher_name }}</td>
+                                <td>{{ x.type_book }}</td>
+                                <td align="center">{{ x.book_price }}</td>
+                                <td align="center">{{ x.b_qty }}</td>
+                                <td><a href="/b_issue">Issue</a></td>
+
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" align="center">
+                                <p style="background-color: #ff000d; color: #f5f8f5;">
+                                    No books found for {{ search_term }}
+                                </p>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </table>
+                <br><br>
+            </main>
+            <a href="/library"><label>Back</label></a>
+            <footer>
+                <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+            </footer>
+        </body>
+        </html>

@@ -1,0 +1,62 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Update Book</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+<body>
+    <nav>
+        <a href="/home">Home</a>
+    </nav>
+    <main align="center">
+        <h2 align = "center ">Update Book Details</h2>    
+        <form action="updaterecord/{{ books.id }}" method="post">
+            <!-- Security token -->
+            {% csrf_token %}
+         
+    <table align="center">
+
+        <tr>
+        <td><label>Book Name:</label></td>
+        <td><input name="bname" value="{{ books.book_name }}"></td>
+        </tr>
+        <tr>
+        <td><label>Writter:</label></td>
+        <td><input name="writer" value="{{ books.writer_name }}"></td>
+        </tr>
+       <tr>
+        <td><label>Publisher:</label></td>
+        <td><Input name="publisher" value="{{ books.publisher_name }}"></td>
+        </tr>
+        <tr>
+        <td><label>Edition:</label></td><td>
+        <input name="edition" value="{{ books.book_edition }}"></td>
+        </tr>
+        <tr>
+        <td><label>Type:</label></td><td>
+        <input name="type" value="{{ books.type_book }}"  required></td>
+        </tr>
+        <tr>
+        <td><label>Price:</label></td><td>
+        <input name="price" value="{{ books.book_price }}" required></td>
+        </tr>
+        <td><label>Qty:</label></td><td>
+        <input name="qty" value="{{ books.b_qty }}" required></td>
+        </tr>
+        </table>
+        <br>
+        <input type="submit">
+        </form>
+        <a href="/library"><button>Cancel</button></a>
+        
+    </main>
+    <a href="/home"><label>Back</label></a>
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

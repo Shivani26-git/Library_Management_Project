@@ -1,0 +1,70 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <link rel="stylesheet" href="{% static 'msg.css' %}">
+    <title>Add Book</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+<body>
+    <nav>
+        <a href="/home">Home</a>
+    </nav>
+    <main align="center">
+        <h2 align = "center ">Add New Book</h2>    
+        <form method="POST" enctype="multipart/form-data" action="{% url 'book_submit' %}">
+ 
+            <!-- Security token -->
+            {% csrf_token %}
+         
+    <table align="center">
+     
+        <tr>
+        <td><label>Book ID:</label></td><td>
+        <input type="text" name="b_ID" required></td>
+        </tr>
+        <tr>
+        <tr>
+        <td><label>Book Name:</label></td><td>
+        <input type="text" name="bname" required></td>
+        </tr>
+        <tr>
+        <td><label>Writter:</label></td><td>
+        <input type="text" name="writer" required></td>
+        </tr>
+       <tr>
+        <td><label>Publisher:</label></td><td>
+        <input type="text" name="publisher" required></td>
+        </tr>
+        <tr>
+        <td><label>Edition:</label></td><td>
+        <input type="text" name="edition" required></td>
+        </tr>
+        <tr>
+        <td><label>Type:</label></td><td>
+        <input type="text" name="type" required></td>
+        </tr>
+        <tr>
+        <td><label>Price:</label></td><td>
+        <input type="text" name="price" required></td>
+        </tr>
+        <tr>
+        <td><label>Qty:</label></td><td>
+        <input type="text" name="qty" required></td>
+        </tr>
+        </table>
+        <br>
+        <input type="submit">
+        </form>
+        <a href="/library"><button>Cancel</button></a>
+        
+    </main>
+    <a href="/library"><label>Back</label></a>
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

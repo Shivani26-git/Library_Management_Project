@@ -1,0 +1,55 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Book Return</title>
+<body>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    <nav>
+        <a href="/home">Home</a>
+    </nav>
+    <main>
+        <h2 align = "center ">Book Reissue</h2>    
+        <form action="{% url 'b_reissued' id=book.id %}" method="post">
+            <!-- Security token -->
+            {% csrf_token %}
+         
+    <table align="center">
+
+        <tr>
+        <td><label>Book Issue No. :</label></td>
+        <td><input name="issue_id" value="{{ book.id }}"></td>
+        <td><label>Issue Date:</label></td>
+        <td><Input name="I_date" value="{{ book.i_date|date:'Y-m-d' }}"></td>
+        </tr>
+        <tr>
+        <td><label>Member Id:</label></td><td>
+        <input name="m_l_id" value="{{ book.l_Id }}" required></td>
+        <td><label>Member Name:</label></td><td>
+        <input name="m_name" value="{{ book.m_name }}" required></td>
+        </tr>
+        <tr>
+        <td><label>Book Id:</label></td><td>
+        <input name="m_l_id" value="{{ book.b_Id }}" required></td>
+        <td><label>Book Name:</label></td>
+        <td><input name="bname" value="{{ book.book_name }}"></td>
+        </tr>
+         <td><label>Due Date</label></td><td>
+        <input name="R_date" value="{{ book.r_date|date:'Y-m-d' }}"></td>
+        </tr>
+        </table>
+        <br>
+        <input type="submit">
+        </form>
+        <a href="/i_report"><button>Cancel</button></a>
+        <a href="/home"><label>Back</label></a>
+         </main>
+        <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

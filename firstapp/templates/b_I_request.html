@@ -1,0 +1,51 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Book Issue Details</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+<body>
+
+    <nav>
+        <a href="/home">Home</a>
+    </nav>
+    <main>
+        <h2 align = "center ">Book Issue Request</h2>
+
+        <table border="1" align = "center">
+            <th style="width:75px">Issue No.</th>
+            <th style="width:100px">Request Date</th>
+            <th style="width:100px">Member Id</th>
+            <th style="width:100px">Member Name</th>
+            <th style="width:100px">Book Id</th>
+            <th style="width:100px">Book Name</th>
+            <th style="width:100px">Writer</th>
+            <th style="width:100px">Publisher</th>
+            <th style="width:100px">Option</th>
+            
+        {% for i in book_issues %}
+            
+            <tr>
+                <td align = "center">{{ i.id }}</td>
+                <td align = "center">{{ i.i_date }}</td>
+                <td align = "center"><a href="member_entry">{{ i.l_Id }}</a></td>
+                <td>{{ i.m_name }}</a></td>
+                <td align = "center"><a href="library">{{ i.b_Id }}</a></td>
+                <td>{{ i.book_name }}</a></td>
+                <td>{{ i.writer_name }}</a></td>
+                <td>{{ i.publisher_name }}</a></td>
+                <td><a href="issue_request/{{ i.id }}">Issue</a></td>
+            </tr>
+        {% endfor %}   
+        </table>
+        </main>
+        <a href="/home"><button>Back</button></a>
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

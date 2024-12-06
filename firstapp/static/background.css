@@ -1,0 +1,8 @@
+body {
+    background-image: url('C:\Users\Rosoni9299\Desktop\techonet_training\myproject\firstapp\static\HOME.jpg');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    height: 0; /* Set the height to fill the viewport */
+    margin: 0;
+    /* Additional styles as needed */
+}

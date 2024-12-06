@@ -1,0 +1,92 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Sign-up Page</title>
+<head>
+    <style>
+        form {
+            border: 2px solid #333; /* Add a 2px solid border with color #333 */
+            padding: 20px; /* Add some padding inside the form */
+            width: 300px; /* Set a specific width for the form */
+            margin: auto; /* Center the form horizontally */
+        }
+
+        /* Add some additional styling for form elements if needed */
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+    
+<body>
+
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    
+        <main align = "center">
+        <h2 align = "center "> Create login ID</h2>
+        
+        <form method="POST" enctype="multipart/form-data" action="{% url 'singup' %}">
+ 
+            <!-- Security token -->
+            {% csrf_token %}
+            <table align="Center">
+                <tr>
+                    <td><label>Username*:</label></td>
+                    <td><input type="text" name="username" required></td>
+                </tr>
+                <tr>
+                    <td><label>Email*:</label></td>
+                    <td><input type="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label>Password*:</label></td>
+                    <td><input type="password" id = "password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><label>Confirm Password*:</label></td>
+                    <td><input type="password" id = "cnfm_password" name="cnfm_password" required></td>
+                </tr>
+                <tr>
+                    <td><label>User Type</label></td>
+                    <td><select name="user_type"> 
+                        <option>Select User Type</option>
+                        <option value = "admin">Admin</option>
+                        <option value = "staff">Staff</option>
+                        <option value = "member">Member</option>
+                    </select></td>
+                </tr>
+            </table><br>
+         
+            <input type="submit">       
+        </form> 
+        <br>
+    <a href="{% url 'login_entry' %}"><button>Cancel</button></a>        
+    </main>
+        
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

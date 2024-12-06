@@ -1,0 +1,49 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Admin Page</title>
+<body>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+
+    <nav>
+        <a href="/home"><label>Back</label></a>
+    </nav>
+    <main align = "center">
+        
+            <h2 align = "center ">Users</h2>    
+        <div class="book" align = " center">
+            <table border="1" align = "center">
+                    
+                <th style="width:75px">S. No.</th>
+                <th style="width:75px">User Name</th>
+                <th style="width:100px">Email Id</th>
+                <th style="width:100px">Password</th>
+                <th style="width:100px">User Type</th>
+                <th style="width:100px" colspan="2">Option</th>
+                
+            {% for x in mymembers %}
+                <tr>
+                <td align = "center">{{ x.id }}</td>
+                <td>{{ x.username }}</td>
+                <td>{{ x.email_id }}</td>
+                <td>{{ x.pass_word }}</td>
+                <td>{{ x.l_type }}</td>
+                <td><a href="u_delete/{{ x.id }}">Delete</a></td>
+                <td><a href="u_edit/{{ x.id }}">Edit</a></td>
+                </tr>
+              {% endfor %}   
+            </table>         
+            </div>
+            <br>
+            </main>
+    
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>

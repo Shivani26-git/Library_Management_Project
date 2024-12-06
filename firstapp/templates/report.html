@@ -1,0 +1,50 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Book Issue Details</title>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    <body>
+        <nav>
+            <a href="/home">Home</a>
+        </nav>
+        <main>
+            <h2 align="center">Book Issued Report</h2>
+    
+            <table border="1" align="center">
+                <th style="width:75px">Issue No.</th>
+                <th style="width:100px">Request Date</th>
+                <th style="width:100px">Issue Date</th>
+                <th style="width:100px">Return Date</th>
+                <th style="width:100px">Member Name</th>
+                <th style="width:100px">Book Name</th>
+                <th style="width:100px">Author</th>
+                <th style="width:100px">Publication</th>
+                <th style="width:100px">Option</th>
+    
+                
+            {% for i in Buks %}
+                <tr>
+                    <td align="center">{{ i.id }}</td>
+                    <td align="center">{{ i.rqst_date }}</td>
+                    <td align="center">{{ i.i_date }}</td>
+                    <td align="center">{{ i.r_date }}</a></td>
+                    <td>{{ i.m_name }}</td>
+                    <td>{{ i.book_name }}</td>
+                    <td>{{ i.writer_name }}</td>
+                    <td>{{ i.publisher_name }}</td>
+                    <td><a href="b_return/{{ i.id }}">Return</a></td>
+                    <td><a href="reissue/{{ i.id }}">Reissue</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </main>
+        <a href="/library"><label>Back</label></a>
+        <footer>
+            <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+        </footer>
+    </body>
+</html>

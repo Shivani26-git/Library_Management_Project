@@ -1,0 +1,67 @@
+{% load static %}
+
+<html>
+    <link rel="stylesheet" href="{% static 'first.css' %}">
+    <title>Book Return</title>
+<body>
+    <header>
+        <img src="{% static 'Logo.png' %}" align="left" width="125" height="80">
+        <h1>Mera Pustkalay</h1>
+    </header>
+    <nav>
+        <a href="/home">Home</a>
+    </nav>
+    <main>
+        <h2 align = "center ">Book Return</h2>    
+    <table align="center">
+        <form action="{% url 'return_b' id=books.id %}" method="post">
+            <!-- Security token -->
+            {% csrf_token %}
+         
+    <table align="center">
+      
+        <tr>
+        <td><label>Book Issue No. :</label></td>
+        <td><input name="I_no" value="{{ books.id }}"></td>
+        <td><label>Book Id:</label></td><td>
+        <input name="book_id" value="{{ books.b_Id }}" required></td>
+        </tr>
+        <tr>
+        <td><label>Book Name:</label></td>
+        <td><input name="bname" value="{{ books.book_name }}"></td>
+        <td><label>Writter:</label></td>
+        <td><input name="writer" value="{{ books.writer_name }}"></td>
+        </tr>
+        <tr>
+        <td><label>Member Id:</label></td><td>
+        <input name="member_id" value="{{ books.l_Id }}" required></td>
+        <td><label>Member Name:</label></td><td>
+        <input name="m_name" value="{{ books.m_name }}" required></td>
+        </tr>
+        <tr>
+        <td><label>Issue Date:</label></td>
+        <td><Input name="I_date" value="{{ books.i_date|date:'Y-m-d' }}"></td>
+        <td><label>Return Date</label></td><td>
+        <input name="R_date" value="{{ books.r_date|date:'Y-m-d' }}"></td>
+        </tr>
+        <tr>
+        <td><label>Reissue:</label></td><td>
+        <input name="b_reissue" value="{{ books.risu_date|date:'Y-m-d' }}" required></td>
+        <td><label>Fine:</label></td><td>
+        <input name="fine" value="{{ books.type_book }}"required></td>
+        </tr>
+        </table>
+        <br>
+        <input type="submit" align="center">
+        </form>
+        <a href="/i_report" align="center"><button align="center">Cancel</button></a>
+        <a href="/print"><button align="center">Print</button></a>
+
+    </main>
+    <a href="/home"><button>Back</button></a>
+    <footer>
+        <marquee>&copy; 2024 College Name. All rights reserved.</marquee>
+    </footer>
+
+</body>
+</html>
